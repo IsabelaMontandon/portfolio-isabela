@@ -181,6 +181,11 @@ button {
   margin-top: 12px;
 }
 
+/* Currículo também disponível no card lateral em telas pequenas */
+.sidebar-cv-button {
+  display: none;
+}
+
 .content {
   min-width: 0;
 }
@@ -867,8 +872,29 @@ button {
     display: none;
   }
 
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .topbar-actions {
+    margin-left: auto;
+  }
+
+  .main-nav {
+    order: 2;
+    width: 100%;
+  }
+
   .cv-button {
-    display: none;
+    width: 38px;
+    height: 34px;
+    padding: 0;
+    font-size: 0;
+    border-radius: 10px;
+  }
+
+  .cv-button i {
+    font-size: 0.86rem;
   }
 
   .experience-summary {
@@ -889,17 +915,112 @@ button {
 }
 
 @media (max-width: 620px) {
+  .site-shell {
+    width: min(100% - 16px, 600px);
+    margin: 8px auto;
+    gap: 12px;
+  }
+
   .sidebar {
-    grid-template-columns: 1fr;
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 10px 12px;
+    padding: 14px;
+    border-radius: 18px;
   }
 
   .profile-photo {
-    width: 170px;
-    grid-row: auto;
+    width: 108px;
+    aspect-ratio: 4 / 5;
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    border-radius: 14px;
+  }
+
+  .sidebar-heading {
+    grid-column: 2;
+    padding: 2px 0 10px;
+  }
+
+  .sidebar-heading h1 {
+    font-size: 1.32rem;
+  }
+
+  .role {
+    font-size: 0.9rem;
+  }
+
+  .areas {
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .sidebar-about {
+    grid-column: 1 / -1;
+    margin: 2px 0 0;
+    font-size: 0.84rem;
+    line-height: 1.55;
   }
 
   .social-links {
-    grid-template-columns: 1fr;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .social-links a {
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.76rem;
+  }
+
+  .sidebar-cv-button {
+    display: inline-flex;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .sidebar-button {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  .topbar {
+    top: 6px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .topbar-actions {
+    gap: 6px;
+  }
+
+  .language-toggle,
+  .theme-toggle,
+  .cv-button {
+    height: 32px;
+  }
+
+  .theme-toggle {
+    width: 56px;
+  }
+
+  .main-nav {
+    gap: 3px;
+  }
+
+  .nav-link {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .section {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .hero {
+    padding-top: 34px;
   }
 
   .hero h2 {
@@ -1437,5 +1558,25 @@ button {
   .academic-gallery,
   .residuos-gallery {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile topbar: keep only language, theme and CV download controls */
+@media (max-width: 620px) {
+  .topbar .main-nav {
+    display: none;
+  }
+
+  .topbar {
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+
+  .topbar .topbar-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+    gap: 8px;
   }
 }
